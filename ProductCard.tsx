@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 
 // Definimos una interfaz para las propiedades del componente para tener un tipado seguro.
