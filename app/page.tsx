@@ -1,65 +1,52 @@
-import Image from "next/image";
+import ProductCard from "@/ProductCard";
+
+// Datos de ejemplo para nuestro catálogo. En el futuro, esto vendrá de una base de datos.
+const mockProducts = [
+  { id: 1, name: "Vaso de Terracota", price: 25.00, imageUrl: "https://images.unsplash.com/photo-1578941342949-8e3848f413f5?q=80&w=2070" },
+  { id: 2, name: "Plato de Cerámica Verde", price: 35.50, imageUrl: "https://images.unsplash.com/photo-1610930148449-5agn5a4e45bf?q=80&w=2070" },
+  { id: 3, name: "Juego de Cubiertos de Madera", price: 45.00, imageUrl: "https://images.unsplash.com/photo-1593203028891-1c54831a39ed?q=80&w=2070" },
+  { id: 4, name: "Tabla de Cortar de Olivo", price: 55.00, imageUrl: "https://images.unsplash.com/photo-1620576628295-f536e8d7494a?q=80&w=2070" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Sección del Hero */}
+      <div style={{ padding: '4rem 2rem', textAlign: 'center' }}>
+        <h1>Welcome to Handcrafted Haven</h1>
+        <p style={{ color: '#555', fontSize: '1.2rem', maxWidth: '600px', margin: '1rem auto' }}>
+          A virtual marketplace connecting talented creators with conscious consumers.
+        </p>
+        <div style={{ marginTop: '2rem' }}>
+          <button style={{
+            backgroundColor: 'var(--primary-color)',
+            color: 'var(--background-color)',
+            border: 'none',
+            padding: '0.75rem 1.5rem',
+            fontSize: '1rem',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}>
+            Browse Catalog
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* Sección del Catálogo de Productos */}
+      <div style={{ padding: '2rem' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Featured Products</h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '2rem',
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          {mockProducts.map(product => (
+            <ProductCard key={product.id} id={product.id} name={product.name} price={product.price} imageUrl={product.imageUrl} />
+          ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
