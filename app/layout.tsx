@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
-import Header from "@/app/Header"; // Importamos el Header
-import Footer from "@/app/Footer"; // Importamos el Footer 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
  
 // Configuración de fuentes (puedes ajustar según las que uses)
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
